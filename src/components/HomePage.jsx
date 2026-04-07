@@ -22,7 +22,7 @@ const GithubIcon = () => (
   </svg>
 );
 
-const LandingPage = () => {
+const HomePage = () => {
   const [clickCount, setClickCount] = useState(0);
 
   const handleButtonClick = () => {
@@ -118,4 +118,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default HomePage;
