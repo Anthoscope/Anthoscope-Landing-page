@@ -49,10 +49,10 @@ const TeamMemberCard = ({ photo, name, caption, links }) => (
 // MAIN PAGE COMPONENT
 const AboutPage = () => {
   const teamMembers = [
-    { photo: "/images/mylonas.png", name: "Alexandros Mylonas", caption: "Physicist", links: { linkedin: "#", github: "#" } },
+    { photo: "/images/mylonas.png", name: "Alexandros Mylonas", caption: "Physicist", links: { linkedin: "https://www.linkedin.com/in/alexmyl/", github: "https://github.com/almylonas" } },
     { photo: "/images/evaggelia.png", name: "Evangelia Patsatzaki", caption: "Electrical & Computer Engineer", links: { linkedin: "https://www.linkedin.com/in/evangelia-patsatzaki-049b8a2b3/", github: "https://github.com/Epatsatzaki" } },
-    { photo: "/images/velloukanikaki.png", name: "Georgios Vellios", caption: "Electronic Engineer", links: { linkedin: "#", github: "#" } },
-    { photo: "/images/nikos.png", name: "Nikos Chatzis", caption: "Surveying Engineer", links: {linkedin: "#", github: "#" } },
+    { photo: "/images/velloukanikaki.png", name: "Georgios Vellios", caption: "Electronic Engineer", links: { linkedin: "https://www.linkedin.com/in/george-vellios-2106000v/", github: "https://github.com/Niel518" } },
+    { photo: "/images/nikos.png", name: "Nikos Chatzis", caption: "Surveying Engineer", links: {linkedin: "#", github: "https://github.com/nikoschatzes657-design" } },
     { photo: "/images/team5.jpg", name: "Maria Maragkou", caption: "Agrοnomist", links: {linkedin: "#", github: "#" } },
     { photo: "/images/team6.jpg", name: "Grigoris Kaitzis", caption: "Business Administration", links: {linkedin: "#", github: "#" } },
   ];
