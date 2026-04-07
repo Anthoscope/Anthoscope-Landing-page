@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ command }) => {
-  return {
-    plugins: [react()],
-  base: command === 'serve' ? '/' : '/Anthoscope-Landing-page/',
-  }
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  base: './', // This tells Vite to look for assets in the CURRENT folder
 })
