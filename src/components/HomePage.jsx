@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CherryBlossom from './CherryBlossom';
 import AnimatedBackground from './AnimatedBackground';
 
-// --- Local SVG Components (Reliable & Lightweight) ---
+// --- Local SVG Components ---
 const InstagramIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
@@ -29,9 +29,10 @@ const HomePage = () => {
     setClickCount(prev => prev + 1);
   };
 
+  // Swapped to warmer rose tones to avoid the magenta medical look
   const buttonColor = clickCount > 0 
-    ? 'bg-pink-700 hover:bg-pink-800' 
-    : 'bg-vivid-pink hover:bg-pink-600';
+    ? 'bg-rose-800 hover:bg-rose-900' 
+    : 'bg-rose-600 hover:bg-rose-700';
 
   return (
     <div className="relative min-h-screen overflow-hidden flex flex-col">
@@ -40,7 +41,7 @@ const HomePage = () => {
       {/* Top Navigation */}
       <Link
         to="/about"
-        className="fixed top-6 right-6 z-30 px-6 py-3 bg-light-crimson/80 backdrop-blur-sm rounded-full text-gray-700 hover:text-vivid-pink transition-colors duration-300 hover:bg-light-crimson shadow-lg hover:shadow-xl font-medium border border-light-pink"
+        className="fixed top-6 right-6 z-30 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full text-gray-700 hover:text-rose-600 transition-colors duration-300 shadow-lg hover:shadow-xl font-medium border border-gray-100"
       >
         About
       </Link>
@@ -59,46 +60,43 @@ const HomePage = () => {
           />
         </div>
         
-        {/* Tagline */}
-        <p className="text-xl md:text-1xl mb-10 max-w-2xl -mt-4 relative z-20 font-medium" style={{ color: '#e76194' }}>
-          Making you happy
+        {/* Tagline - Improved Contrast and Functional Copy */}
+        <p className="text-xl md:text-2xl mb-10 max-w-2xl -mt-4 relative z-20 font-medium text-gray-800 tracking-wide">
+          Navigate allergy season with confidence.
         </p>
 
         {/* Primary Action Button */}
         <button
           onClick={handleButtonClick}
-          className={`px-10 py-4 text-2xl font-bold rounded-full text-white transition-all duration-500 transform hover:scale-105 shadow-xl animate-pulse-glow ${buttonColor}`}
+          className={`px-10 py-4 text-2xl font-bold rounded-full text-white transition-all duration-500 transform hover:scale-105 shadow-xl ${buttonColor}`}
         >
           {clickCount > 0 ? 'Launching...' : 'Start Here'}
         </button>
         
-        <div className="mt-8 text-gray-400">
-          <p className="text-sm font-light">Cherries fallen: {clickCount}</p>
+        <div className="mt-8 text-gray-500">
+          <p className="text-sm font-medium">Cherries fallen: {clickCount}</p>
         </div>
       </div>
 
       {/* Three-Column Footer */}
-      <footer className="relative z-20 w-full px-8 py-6 flex flex-col md:flex-row items-center justify-between text-gray-500 text-sm">
+      <footer className="relative z-20 w-full px-8 py-6 flex flex-col md:flex-row items-center justify-between text-gray-600 text-sm">
         
-        {/* Column 1: Social Media Links */}
         <div className="flex items-center space-x-6 mb-6 md:mb-0 md:w-1/3">
-          <a href="https://instagram.com/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-vivid-pink transition-colors transform hover:scale-110">
+          <a href="https://instagram.com/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-rose-600 transition-colors transform hover:scale-110">
             <InstagramIcon />
           </a>
-          <a href="https://linkedin.com/company/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-vivid-pink transition-colors transform hover:scale-110">
+          <a href="https://linkedin.com/company/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-rose-600 transition-colors transform hover:scale-110">
             <LinkedinIcon />
           </a>
-          <a href="https://github.com/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-vivid-pink transition-colors transform hover:scale-110">
+          <a href="https://github.com/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-rose-600 transition-colors transform hover:scale-110">
             <GithubIcon />
           </a>
         </div>
 
-        {/* Column 2: Center Copyright */}
         <div className="md:w-1/3 text-center font-medium mb-6 md:mb-0">
           ©2026 Anthoscope
         </div>
 
-        {/* Column 3: Buy Me a Coffee (Right-aligned, no counter) */}
         <div className="md:w-1/3 flex justify-center md:justify-end">
           <a 
             href="https://www.buymeacoffee.com/alexmyl" 
@@ -106,8 +104,9 @@ const HomePage = () => {
             rel="noopener noreferrer"
             className="transition-transform hover:scale-105 active:scale-95"
           >
+            {/* Note: I updated the button_colour hex in the URL to match the new Rose-600 color (e11d48) */}
             <img 
-              src="https://img.buymeacoffee.com/button-api/?text=Buy us a coffee&emoji=&slug=alexmyl&button_colour=e76194&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" 
+              src="https://img.buymeacoffee.com/button-api/?text=Buy us a coffee&emoji=&slug=alexmyl&button_colour=e11d48&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" 
               alt="Buy us a coffee"
               style={{ height: '42px', width: 'auto' }}
             />
