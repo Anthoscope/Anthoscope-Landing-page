@@ -31,7 +31,13 @@ const HomePage = () => {
     : 'bg-cherry-red hover:bg-rose-700';
 
   return (
-    <div className="relative h-screen flex flex-col justify-between selection:bg-cherry-red selection:text-white overflow-hidden font-sans">
+    /* FIXED: 
+       - overflow-hidden: Keeps portrait mobile locked to one screen.
+       - landscape:max-sm:overflow-y-auto: Allows scrolling only when a PHONE is tilted.
+       - md:overflow-hidden: Keeps laptop/tablet locked.
+    */
+    <div className="relative h-screen flex flex-col justify-between selection:bg-cherry-red selection:text-white 
+                    overflow-hidden landscape:max-sm:overflow-y-auto font-sans">
       <AnimatedBackground />
       
       <Link
@@ -43,17 +49,17 @@ const HomePage = () => {
 
       <CherryBlossom clickCount={clickCount} />
 
-      {/* Main Content: Using flex spacers to find the "Sweet Spot" */}
-      <div className="relative z-10 flex flex-col items-center flex-grow px-4 text-center">
+      {/* Main Content Area */}
+      <div className="relative z-10 flex flex-col items-center flex-grow px-4 text-center min-h-max">
         
-        {/* TOP SPACER: Controls how high the logo sits */}
-        <div className="flex-[1.2]" /> 
+        {/* Spacer to lift content slightly */}
+        <div className="flex-[1.2] min-h-[20px]" /> 
 
-        <div className="mb-0 flex items-center justify-center overflow-hidden h-40 md:h-64 w-full max-w-4xl">
+        <div className="mb-0 flex items-center justify-center overflow-hidden h-40 md:h-64 w-full max-w-4xl transition-all">
           <img 
             src={`${base}images/anthologo_neg.png`} 
             alt="Anthoscope Logo" 
-            className="w-full h-full object-contain scale-[1.5] md:scale-[2.1] select-none pointer-events-none"/>
+            className="w-full h-full object-contain scale-[1.5] md:scale-[2.1] landscape:max-sm:scale-[1.0] select-none pointer-events-none"/>
         </div>
         
         <p className="text-lg md:text-2xl mb-8 md:mb-10 max-w-2xl -mt-4 relative z-20 font-medium text-gray-800 tracking-wide px-4">
@@ -71,12 +77,14 @@ const HomePage = () => {
           <p className="text-sm font-medium">Cherries fallen: {clickCount}</p>
         </div>
 
-        {/* BOTTOM SPACER: Larger than the top to push content upward slightly */}
-        <div className="flex-[2]" /> 
+        {/* Bottom spacer for portrait layout balance */}
+        <div className="flex-[2] min-h-[20px] landscape:max-sm:hidden" /> 
       </div>
 
-      <footer className="relative z-20 w-full px-6 pb-6 text-gray-600">
+      {/* Footer stays at the end of the content flow */}
+      <footer className="relative z-20 w-full px-6 pb-6 pt-4 text-gray-600 mt-auto">
         <div className="flex flex-row items-center justify-between">
+          
           <div className="flex-1 flex items-center space-x-4 md:space-x-6">
             <a href="https://instagram.com/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-cherry-red transition-colors"><InstagramIcon /></a>
             <a href="https://linkedin.com/company/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-cherry-red transition-colors"><LinkedinIcon /></a>
