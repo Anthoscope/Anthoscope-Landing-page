@@ -3,22 +3,19 @@ import { Link } from 'react-router-dom';
 import CherryBlossom from './CherryBlossom';
 import AnimatedBackground from './AnimatedBackground';
 
-// Helper for handling base paths in Vite
 const base = import.meta.env.BASE_URL;
 
-// --- Local SVG Components ---
+// --- Icons (Unchanged) ---
 const InstagramIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
   </svg>
 );
-
 const LinkedinIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
   </svg>
 );
-
 const GithubIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.28 1.15-.28 2.35 0 3.5-.73 1.02-1.08 2.25-1 3.5 0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
@@ -27,20 +24,17 @@ const GithubIcon = () => (
 
 const HomePage = () => {
   const [clickCount, setClickCount] = useState(0);
-
-  const handleButtonClick = () => {
-    setClickCount(prev => prev + 1);
-  };
+  const handleButtonClick = () => setClickCount(prev => prev + 1);
 
   const buttonColor = clickCount > 0 
     ? 'bg-rose-950 hover:bg-rose-900' 
     : 'bg-cherry-red hover:bg-rose-700';
 
   return (
-    <div className="relative min-h-screen flex flex-col selection:bg-cherry-red selection:text-white">
+    // Changed h-screen to handle mobile viewports better
+    <div className="relative min-h-screen h-screen flex flex-col selection:bg-cherry-red selection:text-white overflow-hidden">
       <AnimatedBackground />
       
-      {/* 1. TOP NAV */}
       <Link
         to="/about"
         className="fixed top-4 right-4 md:top-6 md:right-6 z-40 px-5 py-2 md:px-6 md:py-3 bg-white/80 backdrop-blur-sm rounded-full text-gray-700 hover:text-cherry-red transition-all duration-300 shadow-lg font-medium border border-gray-100 text-sm md:text-base"
@@ -50,13 +44,13 @@ const HomePage = () => {
 
       <CherryBlossom clickCount={clickCount} />
 
-      {/* 2. MAIN CONTENT */}
+      {/* Main Content: Using flex-grow to push footer down */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-grow px-4 text-center">
         <div className="mb-0 -mt-10 flex items-center justify-center overflow-hidden h-40 md:h-64 w-full max-w-4xl">
           <img 
             src={`${base}images/anthologo_neg.png`} 
             alt="Anthoscope Logo" 
-            className="w-full h-full object-contain scale-[1.4] md:scale-[2.1] select-none pointer-events-none"/>
+            className="w-full h-full object-contain scale-[1.5] md:scale-[2.1] select-none pointer-events-none"/>
         </div>
         
         <p className="text-lg md:text-2xl mb-8 md:mb-10 max-w-2xl -mt-4 relative z-20 font-medium text-gray-800 tracking-wide px-4">
@@ -65,7 +59,7 @@ const HomePage = () => {
 
         <button
           onClick={handleButtonClick}
-          className={`px-8 py-3 md:px-10 md:py-4 text-xl md:text-2xl font-bold rounded-full text-white transition-all duration-500 transform hover:scale-105 shadow-xl ${buttonColor}`}
+          className={`px-10 py-4 text-xl md:text-2xl font-bold rounded-full text-white transition-all duration-500 transform hover:scale-105 shadow-xl ${buttonColor}`}
         >
           {clickCount > 0 ? 'Launching...' : 'Start Here'}
         </button>
@@ -75,12 +69,12 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* 3. FOOTER */}
-      <footer className="relative z-20 w-full px-6 pb-6 text-gray-600">
+      {/* FOOTER: Fixed at bottom for mobile, shared row for laptop */}
+      <footer className="relative z-20 w-full px-6 pb-6 text-gray-600 mt-auto">
         <div className="flex flex-row items-center justify-between">
           
           {/* LEFT: Social Media */}
-          <div className="flex-1 flex items-center space-x-3 md:space-x-6 justify-start">
+          <div className="flex items-center space-x-4 md:space-x-6">
             <a href="https://instagram.com/anthoscope" target="_blank" rel="noopener noreferrer" className="hover:text-cherry-red transition-colors">
               <InstagramIcon />
             </a>
@@ -92,32 +86,35 @@ const HomePage = () => {
             </a>
           </div>
 
-          {/* MIDDLE: Copyright (Visible only on Laptop) */}
+          {/* MIDDLE: Copyright (Laptop only) */}
           <div className="hidden md:block flex-1 text-center font-medium text-xs tracking-widest uppercase opacity-60">
             ©2026 Anthoscope
           </div>
 
-          {/* RIGHT: Narrower Coffee Button for mobile */}
-          <div className="flex-1 flex justify-end">
-            <a href="https://www.buymeacoffee.com/alexmyl" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-105 active:scale-95">
-              {/* PC Version (With Text) */}
-              <img 
-                src="https://img.buymeacoffee.com/button-api/?text=Buy us a coffee&emoji=&slug=alexmyl&button_colour=e11d48&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" 
-                alt="Buy us a coffee"
-                className="hidden md:block h-10 w-auto shadow-sm"
-              />
-              {/* Mobile Version (Narrow - Icon only) */}
-              <img 
-                src="https://img.buymeacoffee.com/button-api/?text=&emoji=☕&slug=alexmyl&button_colour=e11d48&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" 
-                alt="Buy us a coffee"
-                className="md:hidden h-10 w-auto shadow-sm rounded-xl"
-              />
+          {/* RIGHT: Coffee Button (Emoji only on mobile) */}
+          <div className="flex justify-end">
+            <a 
+              href="https://www.buymeacoffee.com/alexmyl" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center justify-center 
+                         bg-white/40 md:bg-white/80 
+                         backdrop-blur-sm 
+                         text-cherry-red border border-cherry-red/30
+                         p-2 md:px-5 md:py-2 rounded-full md:rounded-2xl 
+                         shadow-sm hover:shadow-md hover:bg-white 
+                         transition-all active:scale-95"
+            >
+              <span className="text-2xl md:text-xl md:mr-2 leading-none">☕</span>
+              <span className="hidden md:inline font-['Grand_Hotel'] text-lg md:text-xl font-normal leading-none pt-1">
+                Buy us a coffee
+              </span>
             </a>
           </div>
         </div>
 
-        {/* MOBILE ONLY COPYRIGHT: Now pushed further down (mt-24) to require scrolling */}
-        <div className="md:hidden mt-24 text-center font-medium text-[10px] tracking-widest uppercase opacity-40">
+        {/* MOBILE ONLY COPYRIGHT: Pushed out of initial view */}
+        <div className="md:hidden mt-32 text-center font-medium text-[10px] tracking-widest uppercase opacity-40">
           ©2026 Anthoscope
         </div>
       </footer>

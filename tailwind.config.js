@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Baloo 2', 'sans-serif'], // Sets Baloo 2 as the default
+        script: ['Grand Hotel', 'cursive'], // Custom class: font-script
+      },
       colors: {
         // Your new color scheme
         'light-pink': '#fdc2da',      // Your light pink
