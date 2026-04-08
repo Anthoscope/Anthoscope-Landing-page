@@ -66,7 +66,7 @@ const AboutPage = () => {
     { photo: `${base}images/evaggelia.png`, name: "Evangelia Patsatzaki", caption: "Electrical & Computer Engineer", links: { linkedin: "https://www.linkedin.com/in/evangelia-patsatzaki-049b8a2b3/", github: "https://github.com/Epatsatzaki" } },
     { photo: `${base}images/velloukanikaki.png`, name: "Georgios Vellios", caption: "Electronic Engineer", links: { linkedin: "https://www.linkedin.com/in/george-vellios-2106000v/", github: "https://github.com/Niel518" } },
     { photo: `${base}images/nikos.png`, name: "Nikos Chatzis", caption: "Surveying Engineer", links: {linkedin: "#", github: "https://github.com/nikoschatzes657-design" } },
-    { photo: `${base}images/team5.jpg`, name: "Maria Maragou", caption: "Agrοnomist", links: {linkedin: "https://www.linkedin.com/in/maria-maragou-22a3b91a2/", github: "#" } },
+    { photo: `${base}images/Maria.jpg`, name: "Maria Maragou", caption: "Agrοnomist", links: {linkedin: "https://www.linkedin.com/in/maria-maragou-22a3b91a2/", github: "#" } },
     { photo: `${base}images/Grigoris.png`, name: "Grigoris Kaitzis", caption: "Business Administration", links: {linkedin: "https://www.linkedin.com/in/grigorioskaitzis/", github: "#" } },
   ];
 
